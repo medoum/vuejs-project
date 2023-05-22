@@ -1,6 +1,17 @@
 <template>
   <h1>{{ title }}</h1>
-  <Modal :header="header" :text="text" theme="ggdhh" />
+  <p>Welcome...</p>
+  <div v-if="showModal">
+    <Modal theme="" @close="toggleModal">
+      <template v-slot:links>
+          <a href="#">sign up now</a>
+          <a href="#">more info</a>
+      </template>
+      <h1>Mohamed Doumbouya</h1>
+      <p>The daily app</p>
+    </Modal>
+  </div>
+  <button @click.alt="toggleModal">Open Modal (alt)</button>
 </template>
 
 <script>
@@ -11,12 +22,17 @@ export default {
   components: { Modal },
   data(){
     return{
-      title : 'Working late on My first vue App :)',
+      title : 'DAILY vue App :)',
       header : "Sign up for the Giveaway",
-      text : "Mohamed is becoming more motivated about programming"
+      text : "Mohamed is becoming more motivated about programming",
+      showModal: false
     }
   },
- 
+  methods: {
+    toggleModal(){
+      this.showModal = !this.showModal;
+    }
+  }
 }
 </script>
 
@@ -34,4 +50,5 @@ h1{
   display: inline-block;
   padding-bottom: 10px;
 }
+
 </style>
